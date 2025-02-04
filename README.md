@@ -111,9 +111,10 @@ export default function YourComponent() {
 
 ### Resources
 
-- [React Official Documentation](https://reactjs.org/docs/getting-started.html)
+- [React Official Documentation](https://react.dev/https://reactjs.org/docs/getting-started.html)
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
-- [React Hooks Documentation](https://reactjs.org/docs/hooks-intro.html)
+- [React Hooks Documentation](https://react.dev/reference/react/hookshttps://reactjs.org/docs/hooks-intro.html)
+- [albertprofe](https://albertprofe.dev/)
 
 <mark>Happy Coding!</mark> 💻🚀
 
