@@ -27,6 +27,12 @@ export default function MultiFeatureApp() {
   return (
     <div>
       <div>
+        <h1>useState practice</h1>
+        <p>
+          <b>App.jsx</b> component incorporates three exercises (Registration Form, Shopping Cart, Todo List) along with an
+          extra feature (Profile Editor) into a single component with four
+          buttons to switch between them.
+        </p>
         <button onClick={() => setActiveFeature("register")}>
           Registration
         </button>
