@@ -4,7 +4,6 @@
 
 > Create four React components focusing on state management, form handling, and real-world scenarios. Each exercise should demonstrate practical use of React hooks and component design.
 
-
 ### Key Requirements
 
 * Use the `spread operator` for state updates
@@ -116,4 +115,66 @@ export default function YourComponent() {
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
 - [React Hooks Documentation](https://reactjs.org/docs/hooks-intro.html)
 
-### Happy Coding! 💻🚀
+<mark>Happy Coding!</mark> 💻🚀
+
+## `MultiFeatureApp` component
+
+```jsx
+import { useState } from "react";
+
+// Import the components we created earlier
+import ProfileEditor from "./ProfileEditor";
+import RegisterForm from "./RegisterForm";
+import ShoppingCart from "./ShoppingCart";
+import TodoList from "./TodoList";
+
+export default function MultiFeatureApp() {
+  const [activeFeature, setActiveFeature] = useState("register");
+
+  const renderActiveFeature = () => {
+    switch (activeFeature) {
+      case "register":
+        return <RegisterForm />;
+      case "cart":
+        return <ShoppingCart />;
+      case "todo":
+        return <TodoList />;
+      case "profile":
+        return <ProfileEditor />;
+      default:
+        return <div>Select a feature</div>;
+    }
+  };
+
+  return (
+    <div>
+      <div>
+        <button onClick={() => setActiveFeature("register")}>
+          Registration
+        </button>
+        <button onClick={() => setActiveFeature("cart")}>Shopping Cart</button>
+        <button onClick={() => setActiveFeature("todo")}>Todo List</button>
+        <button onClick={() => setActiveFeature("profile")}>
+          Profile Editor
+        </button>
+      </div>
+      <div>{renderActiveFeature()}</div>
+    </div>
+  );
+}
+```
+
+
+
+This React component is like a control center for four different mini-apps:
+
+1. A registration form
+2. A shopping cart
+3. A todo list
+4. A profile editor
+
+It has four buttons at the top. When you click a button, it shows the corresponding mini-app below.
+
+The component uses React's `useState` to keep track of which mini-app (or "feature") is currently active. The `renderActiveFeature` function decides which mini-app to show based on which button was last clicked.
+
+> This setup allows users to switch between different features easily, all within the same page. It's a bit like having a Swiss Army knife of React components!
