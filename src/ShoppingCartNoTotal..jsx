@@ -2,13 +2,13 @@ import { useState } from "react";
 
 export default function ShoppingCart() {
   const [cart, setCart] = useState([]);
-  const [newItem, setNewItem] = useState({ name: "", quantity: 1, price: 0 });
+  const [newItem, setNewItem] = useState({ product: "", quantity: 1, price: 10 });
 
   const addItem = (e) => {
     e.preventDefault();
-    if (newItem.name.trim() !== "") {
+    if (newItem.product.trim() !== "") {
       setCart([...cart, newItem]);
-      setNewItem({ name: "", quantity: 1, price: 0 });
+      setNewItem({ product: "", quantity: 1, price: 10 });
     }
   };
 
@@ -26,8 +26,8 @@ export default function ShoppingCart() {
       <form onSubmit={addItem}>
         <input
           type="text"
-          name="name"
-          value={newItem.name}
+          name="product"
+          value={newItem.product}
           onChange={handleInputChange}
           placeholder="Item name"
           required
@@ -55,7 +55,7 @@ export default function ShoppingCart() {
       <ul>
         {cart.map((item, index) => (
           <li key={index}>
-            {item.name} - Quantity: {item.quantity}, Price: ${item.price}
+            {item.product} - Quantity: {item.quantity}, Price: ${item.price}
           </li>
         ))}
       </ul>
