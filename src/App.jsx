@@ -4,6 +4,7 @@ import { useState } from "react";
 import ProfileEditor from "./ProfileEditor";
 import RegisterForm from "./RegisterForm";
 import ShoppingCart from "./ShoppingCart";
+import ShoppingCartNoTotal from "./ShoppingCartNoTotal.";
 import TodoList from "./TodoList";
 
 export default function MultiFeatureApp() {
@@ -13,6 +14,8 @@ export default function MultiFeatureApp() {
     switch (activeFeature) {
       case "register":
         return <RegisterForm />;
+      case "cartnototal":
+        return <ShoppingCartNoTotal />;
       case "cart":
         return <ShoppingCart />;
       case "todo":
@@ -29,14 +32,14 @@ export default function MultiFeatureApp() {
       <div>
         <h1>useState practice</h1>
         <p>
-          <b>App.jsx</b> component incorporates three exercises (Registration Form, Shopping Cart, Todo List) along with an
-          extra feature (Profile Editor) into a single component with four
-          buttons to switch between them.
+          <b>App.jsx</b> component incorporates three exercises (Registration
+          Form, Shopping Cart, Todo List) along with an extra feature (Profile
+          Editor) into a single component with four buttons to switch between
+          them.
         </p>
-        <button onClick={() => setActiveFeature("register")}>
-          Registration
-        </button>
+        <button onClick={() => setActiveFeature("register")}>Registration</button>
         <button onClick={() => setActiveFeature("cart")}>Shopping Cart</button>
+        <button onClick={() => setActiveFeature("cartnototal")}>Shopping Cart No Total</button>
         <button onClick={() => setActiveFeature("todo")}>Todo List</button>
         <button onClick={() => setActiveFeature("profile")}>
           Profile Editor
