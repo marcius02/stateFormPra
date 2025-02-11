@@ -32,7 +32,7 @@ export default function ProfileEditor() {
 
   return (
     <>
-      <h3>RegisterForm</h3>
+      <h3>Profile Editor</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
