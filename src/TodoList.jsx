@@ -35,6 +35,7 @@ export default function TodoList() {
       type:'add',
       name: taskName.value,
     });
+    e.target.reset();
   }
 
   return (
