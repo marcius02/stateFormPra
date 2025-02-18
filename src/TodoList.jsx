@@ -1,63 +1,60 @@
-import { useState } from "react";
+import { useReducer } from "react";
+
+const initialState = [{
+  id:"",
+  name:"",
+  completed: false,
+}]
+
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'add': {
+      return [
+        ...state,
+        {
+          id: Date.now(),
+          name: action.name,
+          completed: false,
+        },
+      ];
+    }
+   }
+}
+
 
 export default function TodoList() {
-  const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState({ text: "", category: "personal" });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addTodo = (e) => {
+  function handleButtonClick(e){
     e.preventDefault();
-    setTodos([...todos, { ...newTodo, completed: false }]);
-    setNewTodo({ text: "", category: "personal" });
-  };
 
-  const toggleComplete = (index) => {
-    const updatedTodos = [...todos];
-    updatedTodos[index].completed = !updatedTodos[index].completed;
-    setTodos(updatedTodos);
-  };
+    const { taskName } = e.target.elements;
+
+    dispatch({
+      type:'add',
+      name: taskName.value,
+    });
+  }
 
   return (
     <>
       <h3>Todo List</h3>
-      <div>
-        <form onSubmit={addTodo}>
-          <input
-            type="text"
-            value={newTodo.text}
-            onChange={(e) => setNewTodo({ ...newTodo, text: e.target.value })}
-            placeholder="New todo"
-            required
-          />
-          <select
-            value={newTodo.category}
-            onChange={(e) =>
-              setNewTodo({ ...newTodo, category: e.target.value })
-            }
-          >
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-            <option value="shopping">Shopping</option>
-          </select>
-          <button type="submit">Add Todo</button>
-        </form>
-        <ul>
-          {todos.map((todo, index) => (
-            <li
-              key={index}
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-              }}
-            >
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => toggleComplete(index)}
-              />
-              {todo.text} - {todo.category}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <form onSubmit={handleButtonClick}>
+        <input name="taskName" placeholder="To do"/>
+        <button type="submit">Add</button>
+
+        <tbody>
+            {state.map((todo, i) => {
+              return (
+                <tr key={i}>
+                  <td>{todo.name}</td>
+                </tr>
+              );
+            })}
+        </tbody>
+
+      </form>
     </>
   );
 }
